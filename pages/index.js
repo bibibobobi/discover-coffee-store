@@ -11,10 +11,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Coffee Connoisseur</title>
-        <meta
-          name='Discover the local coffee shops near your location.'
-          content='Discover your local coffee shops!'
-        />
+        <meta name='description' content='Discover your local coffee shops!' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
@@ -23,6 +20,14 @@ export default function Home() {
           buttonText='View stores nearby'
           handleOnClick={handleOnBannerBtnClick}
         />
+        <div className={styles.heroImage}>
+          <Image
+            src='/static/hero-image.png'
+            alt='Hero image'
+            width={700}
+            height={325}
+          />
+        </div>
       </main>
     </div>
   );
