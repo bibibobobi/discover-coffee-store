@@ -8,6 +8,7 @@ body {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   color: #373b64;
   height: 100%;
 }
@@ -48,6 +49,21 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color;
 }
 
+/* glass-morphism */
+.glass {
+  background: rgba(249, 191, 255, 0.246);
+  box-shadow: 0 3px 10px 0 rgba(101, 107, 198, 0.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass:hover {
+  background: hsla(0, 0%, 100%, 0.538);
+  border: 1px solid #fff;
+}
+
 :root {
   --text-purple: rgb(65, 57, 160);
   --text-purple-dark: rgb(66, 61, 161);
@@ -81,4 +97,9 @@ button:focus {
   font-style: normal;
   font-weight: 300;
   src: url(/fonts/IBMPlexSans-Light.ttf) format('truetype');
+}
+
+::selection {
+  color: rgb(121, 44, 230);
+  background: rgb(228, 205, 231);
 }
