@@ -16,7 +16,7 @@ export async function getStaticProps(staticProps) {
   return {
     props: {
       coffeeStore: coffeeStores.find((coffeeStore) => {
-        return coffeeStore.fsq_id.toString() === params.id; //dynamic id
+        return coffeeStore.id.toString() === params.id; //dynamic id
       }),
     },
   };
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
   const paths = coffeeStores.map((coffeeStore) => {
     return {
       params: {
-        id: coffeeStore.fsq_id.toString(),
+        id: coffeeStore.id.toString(),
       },
     };
   });
@@ -44,7 +44,7 @@ const CoffeeStore = (props) => {
     return <div>Loading...</div>;
   }
 
-  const { location, name, distance, imgUrl } = props.coffeeStore;
+  const { address, neighborhood, name, imgUrl } = props.coffeeStore;
 
   const handleUpVoteButton = () => {
     console.log('up vote button clicked');
@@ -59,7 +59,7 @@ const CoffeeStore = (props) => {
         <div className={styles.col1}>
           <div className={styles.backToHomeLink}>
             <Link href='/'>
-              <a>Back to home</a>
+              <a>&larr; Back to home</a>
             </Link>
           </div>
           <div className={styles.nameWrapper}>
@@ -71,8 +71,8 @@ const CoffeeStore = (props) => {
               'https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80'
             }
             alt={name}
-            width={600}
-            height={360}
+            width={500}
+            height={400}
             className={styles.storeImg}
           />
         </div>
@@ -85,7 +85,7 @@ const CoffeeStore = (props) => {
               height='24'
               alt='icon'
             />
-            <p className={styles.text}>{location.address}</p>
+            <p className={styles.text}>{address}</p>
           </div>
           <div className={styles.iconWrapper}>
             <Image
@@ -94,7 +94,7 @@ const CoffeeStore = (props) => {
               height='24'
               alt='icon'
             />
-            <p className={styles.text}>{`${distance} m`}</p>
+            <p className={styles.text}>{neighborhood}</p>
           </div>
           <div className={styles.iconWrapper}>
             <Image

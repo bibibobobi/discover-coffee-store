@@ -4,9 +4,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Component {...pageProps} />
-      {/* <footer>
+      <footer>
         <p>&copy;2022 Bibo Chan</p>
-      </footer> */}
+      </footer>
     </>
   );
 }
