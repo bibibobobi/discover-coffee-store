@@ -78,7 +78,7 @@ const CoffeeStore = (initialProps) => {
   return (
     <div className={styles.layout}>
       <Head>
-        <title>{name}</title>
+        <title>{`Coffee Connoisseur | ${name}`}</title>
       </Head>
       <div className={styles.container}>
         <div className={styles.col1}>
