@@ -166,7 +166,7 @@ const CoffeeStore = (initialProps) => {
             <p className={styles.text}>{votingCount}</p>
           </div>
           <button className={styles.upVoteButton} onClick={handleUpVoteButton}>
-            Up Vote 👍
+            Like 👍
           </button>
         </div>
       </div>
