@@ -10,7 +10,7 @@ const createCoffeeStore = async (req, res) => {
       if (id) {
         const findCoffeeStoreRecord = await table
           .select({
-            filterByFormula: `id=${id}`,
+            filterByFormula: `id="${id}"`,
           })
           .firstPage();
 
