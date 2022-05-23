@@ -80,7 +80,6 @@ const CoffeeStore = (initialProps) => {
       });
 
       const dbCoffeeStore = await response.json();
-      console.log(dbCoffeeStore);
     } catch (err) {
       console.error('Error creating coffee store', err);
     }
@@ -105,7 +104,7 @@ const CoffeeStore = (initialProps) => {
 
   const { address, neighborhood, name, imgUrl } = coffeeStore;
 
-  const [votingCount, setVotingCount] = useState(1);
+  const [votingCount, setVotingCount] = useState(0);
 
   const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -113,17 +112,33 @@ const CoffeeStore = (initialProps) => {
 
   useEffect(() => {
     if (data && data.length > 0) {
-      console.log('data from SWR', data);
       setCoffeeStore(data[0]);
 
       setVotingCount(data[0].voting);
     }
   }, [data]);
 
-  const handleUpVoteButton = () => {
-    console.log('up vote button clicked');
-    let count = votingCount + 1;
-    setVotingCount(count);
+  const handleUpVoteButton = async () => {
+    try {
+      const response = await fetch('/api/favoriteCoffeeStoreById', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id,
+        }),
+      });
+
+      const dbCoffeeStore = await response.json();
+
+      if (dbCoffeeStore && dbCoffeeStore.length > 0) {
+        let count = votingCount + 1;
+        setVotingCount(count);
+      }
+    } catch (err) {
+      console.error('Error upvoting the coffee store', err);
+    }
   };
 
   if (error) {

@@ -11,8 +11,6 @@ import { ACTION_TYPES, StoreContext } from '../store/store-context';
 // import coffeeStoresData from '../data/coffee-stores.json';
 
 export async function getStaticProps(context) {
-  console.log('hi getStaticProps');
-
   const coffeeStores = await fetchCoffeeStores();
 
   return {
@@ -23,8 +21,6 @@ export async function getStaticProps(context) {
 }
 
 export default function Home(props) {
-  console.log('props:', props);
-
   const { handleTrackLocation, locationErrorMsg, isFindingLocation } =
     useTrackLocation();
 
@@ -34,8 +30,6 @@ export default function Home(props) {
   const { dispatch, state } = useContext(StoreContext);
 
   const { coffeeStores, latLong } = state;
-
-  console.log({ latLong, locationErrorMsg });
 
   useEffect(() => {
     const setCoffeeStoresByLocation = async () => {
@@ -67,7 +61,6 @@ export default function Home(props) {
   }, [latLong]);
 
   const handleOnBannerBtnClick = () => {
-    console.log('banner btn clicked!');
     handleTrackLocation();
   };
   return (
