@@ -8,9 +8,7 @@ import useTrackLocation from '../hooks/use-track-location';
 import { useEffect, useState, useContext } from 'react';
 import { ACTION_TYPES, StoreContext } from '../store/store-context';
 
-// import coffeeStoresData from '../data/coffee-stores.json';
-
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const coffeeStores = await fetchCoffeeStores();
 
   return {
@@ -58,7 +56,7 @@ export default function Home(props) {
       }
     };
     setCoffeeStoresByLocation();
-  }, [latLong]);
+  }, [latLong, dispatch]);
 
   const handleOnBannerBtnClick = () => {
     handleTrackLocation();
@@ -67,7 +65,10 @@ export default function Home(props) {
     <div className={styles.container}>
       <Head>
         <title>Coffee Connoisseur</title>
-        <meta name='description' content='Discover your local coffee shops!' />
+        <meta
+          name='description'
+          content='allows you to discover coffee stores'
+        />
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
